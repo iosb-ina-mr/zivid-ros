@@ -7,6 +7,9 @@
         <color rgba="0.25 0.25 0.25 1"/>
     </material>
 
+    <!-- Zivid Two Optical Frame Angle -->
+    <xacro:property name="optical_frame_angle" value="3.0" />
+
     <xacro:macro name="zivid_two_camera" params="prefix">
         <!-- Zivid Base Link -->
         <link name="${prefix}base_link">
@@ -33,7 +36,7 @@
 
         <!-- Zivid Optical (Measurement) Joint -->
         <joint name="${prefix}optical_joint" type="fixed">
-            <origin xyz="0.04702 0.05584 0.0295" rpy="-${0.5*pi} 0 -${0.5*pi}"/>
+            <origin xyz="0.04702 0.05584 0.0295" rpy="-${0.5*pi} 0 -${0.5*pi + optical_frame_angle/180*pi}"/>
             <parent link="${prefix}base_link"/>
             <child link="${prefix}optical_frame"/>
         </joint>
